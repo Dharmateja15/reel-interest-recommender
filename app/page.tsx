@@ -5,13 +5,13 @@ import { historyScenarios, HistoryScenario } from '../data/history-sets';
 import { RecommendationResponse, InteractionReel } from '../lib/types';
 
 export default function Home() {
-  const [selectedScenarioId, setSelectedScenarioId] = useState<string>('demoTrapHistory');
+  const [selectedScenarioId, setSelectedScenarioId] = useState<string>('aiClusterHistory');
   const [currentReelId, setCurrentReelId] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [result, setResult] = useState<RecommendationResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const scenario: HistoryScenario = historyScenarios[selectedScenarioId] || historyScenarios.demoTrapHistory;
+  const scenario: HistoryScenario = historyScenarios[selectedScenarioId] || historyScenarios.aiClusterHistory;
 
   // Initialize currentReelId when scenario changes
   useEffect(() => {

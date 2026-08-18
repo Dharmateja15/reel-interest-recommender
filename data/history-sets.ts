@@ -154,24 +154,10 @@ export interface HistoryScenario {
 }
 
 export const historyScenarios: Record<string, HistoryScenario> = {
-  demoTrapHistory: {
-    id: 'demoTrapHistory',
-    title: 'SWE Trap Scenario (MacBook current)',
-    description: 'High-signal Java/SWE lifestyle memes. Current Reel is Laptop Comparison. Trap tests broad SWE interest extraction.',
-    history: demoTrapHistory,
-    defaultCurrentReelId: 'trap-4'
-  },
-  demoTrapHistoryAltCurrent: {
-    id: 'demoTrapHistoryAltCurrent',
-    title: 'SWE Trap Scenario (Java GC current)',
-    description: 'Same history, but Current Reel is Java GC Meme. Tests if JVM interest dominates or remains broad.',
-    history: demoTrapHistoryAltCurrent,
-    defaultCurrentReelId: 'trap-1'
-  },
   aiClusterHistory: {
     id: 'aiClusterHistory',
     title: 'AI Cluster Scenario',
-    description: ' tutorials and prompt discussions. Tests AI interest extraction.',
+    description: 'AI tutorials and prompt discussions. Tests AI interest extraction.',
     history: aiClusterHistory,
     defaultCurrentReelId: 'ai-3'
   },
@@ -181,6 +167,20 @@ export const historyScenarios: Record<string, HistoryScenario> = {
     description: 'Assembly programming, logic gates, cache architecture. Tests Hardware interest extraction.',
     history: hardwareClusterHistory,
     defaultCurrentReelId: 'hw-3'
+  },
+  singleStrongSignalHistory: {
+    id: 'singleStrongSignalHistory',
+    title: 'Single Strong Signal Scenario',
+    description: 'Docker and Kubernetes tutorials. Tests high-signal Cloud interest extraction.',
+    history: singleStrongSignalHistory,
+    defaultCurrentReelId: 'strong-2'
+  },
+  weakSingleSignalHistory: {
+    id: 'weakSingleSignalHistory',
+    title: 'Weak Single Signal Scenario',
+    description: 'Desk setups and gaming memes. Tests low-signal / weak interest handling.',
+    history: weakSingleSignalHistory,
+    defaultCurrentReelId: 'weak-2'
   },
   ambiguousHistory: {
     id: 'ambiguousHistory',
@@ -196,18 +196,18 @@ export const historyScenarios: Record<string, HistoryScenario> = {
     history: noTechSignalHistory,
     defaultCurrentReelId: 'notech-3'
   },
-  singleStrongSignalHistory: {
-    id: 'singleStrongSignalHistory',
-    title: 'Single Strong Signal Scenario',
-    description: 'Docker and Kubernetes tutorials. Tests high-signal Cloud interest extraction.',
-    history: singleStrongSignalHistory,
-    defaultCurrentReelId: 'strong-2'
+  demoTrapHistory: {
+    id: 'demoTrapHistory',
+    title: 'SWE Trap Scenario (MacBook current)',
+    description: 'High-signal Java/SWE lifestyle memes. Current Reel is Laptop Comparison. Trap tests broad SWE interest extraction.',
+    history: demoTrapHistory,
+    defaultCurrentReelId: 'trap-4'
   },
-  weakSingleSignalHistory: {
-    id: 'weakSingleSignalHistory',
-    title: 'Weak Single Signal Scenario',
-    description: 'Desk setups and gaming memes. Tests low-signal / weak interest handling.',
-    history: weakSingleSignalHistory,
-    defaultCurrentReelId: 'weak-2'
+  demoTrapHistoryAltCurrent: {
+    id: 'demoTrapHistoryAltCurrent',
+    title: 'SWE Trap Scenario (Java GC current)',
+    description: 'Same history, but Current Reel is Java GC Meme. Tests if JVM interest dominates or remains broad.',
+    history: demoTrapHistoryAltCurrent,
+    defaultCurrentReelId: 'trap-1'
   }
 };
