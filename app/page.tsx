@@ -323,9 +323,23 @@ export default function Home() {
                           {result.recommendedReel.description}
                         </p>
                       </div>
-                      <div className="text-[10px] pt-2 border-t border-zinc-900/50 flex justify-between text-zinc-500">
-                        <span>Difficulty: {result.recommendedReel.difficulty}</span>
-                        <span>Hype Risk: {result.recommendedReel.hypeRisk}</span>
+                      <div className="pt-2 border-t border-zinc-900/50 flex justify-between items-center">
+                        <div className="text-[10px] text-zinc-500 space-x-3">
+                          <span>Difficulty: {result.recommendedReel.difficulty}</span>
+                          <span>•</span>
+                          <span>Hype Risk: {result.recommendedReel.hypeRisk}</span>
+                        </div>
+                        <a
+                          href={`https://www.youtube.com/results?search_query=${encodeURIComponent(result.recommendedReel.title)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 bg-red-600/20 hover:bg-red-600/30 border border-red-500/40 text-red-300 text-[11px] font-bold px-3 py-1 rounded-lg transition-all"
+                        >
+                          <svg className="w-3.5 h-3.5 text-red-400 fill-current" viewBox="0 0 24 24">
+                            <path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418 c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768 C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.86-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M9.545,15.568V8.432L15.818,12L9.545,15.568z"/>
+                          </svg>
+                          Watch Reel
+                        </a>
                       </div>
                     </div>
                   ) : (
