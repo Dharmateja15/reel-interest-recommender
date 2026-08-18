@@ -3,165 +3,168 @@ export interface YouTubeRecommendation {
   url: string;
 }
 
+const buildSearchUrl = (title: string): string =>
+  `https://www.youtube.com/results?search_query=${encodeURIComponent(title)}`;
+
 export const youtubeRecommendations: Record<string, YouTubeRecommendation[]> = {
   'ai-transformers': [
     {
-      title: 'Attention in transformers, step-by-step (3Blue1Brown)',
-      url: 'https://www.youtube.com/watch?v=wjZofJX0v4M'
+      title: 'Attention in transformers step-by-step 3Blue1Brown',
+      url: buildSearchUrl('Attention in transformers step-by-step 3Blue1Brown')
     },
     {
-      title: 'Transformers, the tech behind LLMs (3Blue1Brown)',
-      url: 'https://www.youtube.com/watch?v=eMxw53s8ZqQ'
+      title: 'Transformers the tech behind LLMs 3Blue1Brown',
+      url: buildSearchUrl('Transformers the tech behind LLMs 3Blue1Brown')
     },
     {
-      title: 'Let\'s build GPT: from scratch, in code (Andrej Karpathy)',
-      url: 'https://www.youtube.com/watch?v=kCc8FmEb1nY'
+      title: "Let's build GPT from scratch in code Andrej Karpathy",
+      url: buildSearchUrl("Let's build GPT from scratch in code Andrej Karpathy")
     }
   ],
   'ai-tools-hype': [
     {
-      title: 'AI Hype vs Reality (Fireship)',
-      url: 'https://www.youtube.com/watch?v=2-M-8T4xVDE'
+      title: 'AI Hype vs Reality Fireship',
+      url: buildSearchUrl('AI Hype vs Reality Fireship')
     }
   ],
   'dsa-red-black': [
     {
-      title: 'Red Black Tree Insertion & Rotations (Abdul Bari)',
-      url: 'https://www.youtube.com/watch?v=qvZGUFHWChY'
+      title: 'Red Black Tree Insertion Rotations Abdul Bari',
+      url: buildSearchUrl('Red Black Tree Insertion Rotations Abdul Bari')
     },
     {
       title: 'Red Black Trees in 3 Minutes',
-      url: 'https://www.youtube.com/watch?v=5IBxA-bZZ28'
+      url: buildSearchUrl('Red Black Trees in 3 Minutes')
     }
   ],
   'dsa-hashmap': [
     {
-      title: 'Data Structures: Hash Tables (HackerRank)',
-      url: 'https://www.youtube.com/watch?v=shs0KM3w0zs'
+      title: 'Data Structures Hash Tables HackerRank',
+      url: buildSearchUrl('Data Structures Hash Tables HackerRank')
     },
     {
       title: 'How HashMaps Work Under the Hood in Java',
-      url: 'https://www.youtube.com/watch?v=c3RVW3KGIIE'
+      url: buildSearchUrl('How HashMaps Work Under the Hood in Java')
     }
   ],
   'java-garbage-collector': [
     {
-      title: 'Java Garbage Collection Fundamentals (Java Brains)',
-      url: 'https://www.youtube.com/watch?v=2MJL_b8mNl0'
+      title: 'Java Garbage Collection Fundamentals Java Brains',
+      url: buildSearchUrl('Java Garbage Collection Fundamentals Java Brains')
     },
     {
-      title: 'JVM Memory Model & Garbage Collectors Explained',
-      url: 'https://www.youtube.com/watch?v=UnaNQgzw4zY'
+      title: 'JVM Memory Model Garbage Collectors Explained',
+      url: buildSearchUrl('JVM Memory Model Garbage Collectors Explained')
     }
   ],
   'java-threads': [
     {
-      title: 'Virtual Threads in Java 21 Explained (Venkat Subramaniam)',
-      url: 'https://www.youtube.com/watch?v=5E3H5Z3_13E'
+      title: 'Virtual Threads in Java 21 Explained Venkat Subramaniam',
+      url: buildSearchUrl('Virtual Threads in Java 21 Explained Venkat Subramaniam')
     },
     {
       title: 'Java Virtual Threads Deep Dive',
-      url: 'https://www.youtube.com/watch?v=r_bFkX4K-k0'
+      url: buildSearchUrl('Java Virtual Threads Deep Dive')
     }
   ],
   'hld-rate-limiter': [
     {
-      title: 'Design a Rate Limiter | System Design (ByteByteGo)',
-      url: 'https://www.youtube.com/watch?v=FU4WlwfS3G0'
+      title: 'Design a Rate Limiter System Design ByteByteGo',
+      url: buildSearchUrl('Design a Rate Limiter System Design ByteByteGo')
     },
     {
       title: 'Rate Limiting Algorithms Explained',
-      url: 'https://www.youtube.com/watch?v=CRGPbCbRfZU'
+      url: buildSearchUrl('Rate Limiting Algorithms Explained')
     }
   ],
   'hld-load-balancing': [
     {
-      title: 'Load Balancers Explained | System Design (ByteByteGo)',
-      url: 'https://www.youtube.com/watch?v=K0Ta65OqQkY'
+      title: 'Load Balancers Explained System Design ByteByteGo',
+      url: buildSearchUrl('Load Balancers Explained System Design ByteByteGo')
     },
     {
       title: 'Consistent Hashing System Design Concept',
-      url: 'https://www.youtube.com/watch?v=s1qW29633eA'
+      url: buildSearchUrl('Consistent Hashing System Design Concept')
     }
   ],
   'cyber-buffer-overflow': [
     {
-      title: 'Buffer Overflow Attack Explained (LiveOverflow)',
-      url: 'https://www.youtube.com/watch?v=1S0aBV-Waeo'
+      title: 'Buffer Overflow Attack Explained LiveOverflow',
+      url: buildSearchUrl('Buffer Overflow Attack Explained LiveOverflow')
     },
     {
-      title: 'Buffer Overflows (Computerphile)',
-      url: 'https://www.youtube.com/watch?v=HSlhY4Uy8DA'
+      title: 'Buffer Overflows Computerphile',
+      url: buildSearchUrl('Buffer Overflows Computerphile')
     }
   ],
   'cyber-phishing': [
     {
-      title: 'How MFA Bypass Phishing Works (NetworkChuck)',
-      url: 'https://www.youtube.com/watch?v=Y7zNlEMDmI4'
+      title: 'How MFA Bypass Phishing Works NetworkChuck',
+      url: buildSearchUrl('How MFA Bypass Phishing Works NetworkChuck')
     }
   ],
   'cloud-docker-layers': [
     {
-      title: 'Docker Tutorial for Beginners (TechWorld with Nana)',
-      url: 'https://www.youtube.com/watch?v=gAkwW2u-Eag'
+      title: 'Docker Tutorial for Beginners TechWorld with Nana',
+      url: buildSearchUrl('Docker Tutorial for Beginners TechWorld with Nana')
     },
     {
-      title: 'Docker Image Layers & Caching Explained (Fireship)',
-      url: 'https://www.youtube.com/watch?v=3c-iBn73dDE'
+      title: 'Docker Image Layers Caching Explained Fireship',
+      url: buildSearchUrl('Docker Image Layers Caching Explained Fireship')
     }
   ],
   'cloud-k8s-pod-lifecycle': [
     {
-      title: 'Kubernetes Architecture Explained (TechWorld with Nana)',
-      url: 'https://www.youtube.com/watch?v=X48VuDVv0do'
+      title: 'Kubernetes Architecture Explained TechWorld with Nana',
+      url: buildSearchUrl('Kubernetes Architecture Explained TechWorld with Nana')
     },
     {
-      title: 'Kubernetes in 100 Seconds (Fireship)',
-      url: 'https://www.youtube.com/watch?v=d6WC5n9G_sM'
+      title: 'Kubernetes in 100 Seconds Fireship',
+      url: buildSearchUrl('Kubernetes in 100 Seconds Fireship')
     }
   ],
   'hardware-cpu-cache': [
     {
-      title: 'CPU Caches Explained: L1, L2, L3 Memory Hierarchy',
-      url: 'https://www.youtube.com/watch?v=yi0FhRqDJfo'
+      title: 'CPU Caches Explained L1 L2 L3 Memory Hierarchy',
+      url: buildSearchUrl('CPU Caches Explained L1 L2 L3 Memory Hierarchy')
     },
     {
-      title: 'Cache Coherence Protocols & MESI Explained',
-      url: 'https://www.youtube.com/watch?v=W3f34F90r6I'
+      title: 'Cache Coherence Protocols MESI Explained',
+      url: buildSearchUrl('Cache Coherence Protocols MESI Explained')
     }
   ],
   'hardware-logic-gates': [
     {
-      title: 'Building a 4-Bit Computer From Logic Gates (Ben Eater)',
-      url: 'https://www.youtube.com/watch?v=gI-qXk7XojA'
+      title: 'Building a 4-Bit Computer From Logic Gates Ben Eater',
+      url: buildSearchUrl('Building a 4-Bit Computer From Logic Gates Ben Eater')
     },
     {
-      title: 'How Logic Gates Work (Ben Eater)',
-      url: 'https://www.youtube.com/watch?v=sTu3LwpF6XI'
+      title: 'How Logic Gates Work Ben Eater',
+      url: buildSearchUrl('How Logic Gates Work Ben Eater')
     }
   ],
   'career-resume-tips': [
     {
-      title: 'Software Engineer Resume Template & Tips',
-      url: 'https://www.youtube.com/watch?v=BYUy1yvZjSi'
+      title: 'Software Engineer Resume Template Tips',
+      url: buildSearchUrl('Software Engineer Resume Template Tips')
     }
   ],
   'career-interview-prep': [
     {
-      title: 'How to Pass Coding & Technical Interviews',
-      url: 'https://www.youtube.com/watch?v=r1MXwyiGi_U'
+      title: 'How to Pass Coding Technical Interviews',
+      url: buildSearchUrl('How to Pass Coding Technical Interviews')
     }
   ],
   'other-git-internals': [
     {
-      title: 'Git Internals - How Git Works (Computerphile)',
-      url: 'https://www.youtube.com/watch?v=fctKc-WjwBU'
+      title: 'Git Internals How Git Works Computerphile',
+      url: buildSearchUrl('Git Internals How Git Works Computerphile')
     }
   ],
   'other-vim-tutorial': [
     {
-      title: 'Vim in 100 Seconds (Fireship)',
-      url: 'https://www.youtube.com/watch?v=ER5JYFK8Wb0'
+      title: 'Vim in 100 Seconds Fireship',
+      url: buildSearchUrl('Vim in 100 Seconds Fireship')
     }
   ]
 };
