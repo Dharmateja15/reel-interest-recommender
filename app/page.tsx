@@ -3,12 +3,14 @@
 import React, { useState, useEffect } from 'react';
 import { historyScenarios, HistoryScenario } from '../data/history-sets';
 import { RecommendationResponse, InteractionReel } from '../lib/types';
+import { getRandomVerifiedVideo, YouTubeRecommendation } from '../data/youtube-recommendations';
 
 export default function Home() {
   const [selectedScenarioId, setSelectedScenarioId] = useState<string>('aiClusterHistory');
   const [currentReelId, setCurrentReelId] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [result, setResult] = useState<RecommendationResponse | null>(null);
+  const [activeVideo, setActiveVideo] = useState<YouTubeRecommendation | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const scenario: HistoryScenario = historyScenarios[selectedScenarioId] || historyScenarios.aiClusterHistory;
@@ -17,12 +19,14 @@ export default function Home() {
   useEffect(() => {
     setCurrentReelId(scenario.defaultCurrentReelId);
     setResult(null);
+    setActiveVideo(null);
     setError(null);
   }, [selectedScenarioId, scenario.defaultCurrentReelId]);
 
   const handleAnalyze = async () => {
     setLoading(true);
     setResult(null);
+    setActiveVideo(null);
     setError(null);
 
     try {
@@ -44,6 +48,11 @@ export default function Home() {
 
       const data: RecommendationResponse = await response.json();
       setResult(data);
+      if (data.recommendedReel) {
+        setActiveVideo(getRandomVerifiedVideo(data.recommendedReel.id));
+      } else {
+        setActiveVideo(null);
+      }
     } catch (err: any) {
       setError(err.message || 'An unexpected error occurred.');
     } finally {
@@ -178,8 +187,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Trigger Button */}
-            <div className="pt-2">
+            {/* Trigger Button & Secondary Watch Recommended Reel Action */}
+            <div className="pt-2 space-y-3">
               <button
                 onClick={handleAnalyze}
                 disabled={loading}
@@ -202,6 +211,20 @@ export default function Home() {
                   </>
                 )}
               </button>
+
+              {result?.recommendedReel && activeVideo && (
+                <a
+                  href={activeVideo.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-red-600/20 hover:bg-red-600/30 border border-red-500/50 text-red-200 font-bold py-3 px-6 rounded-xl transition-all shadow-md flex items-center justify-center gap-2 text-sm"
+                >
+                  <svg className="w-4 h-4 text-red-400 fill-current" viewBox="0 0 24 24">
+                    <path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418 c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768 C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.86-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M9.545,15.568V8.432L15.818,12L9.545,15.568z"/>
+                  </svg>
+                  ▶ Watch Recommended Reel
+                </a>
+              )}
             </div>
             
           </div>
@@ -329,17 +352,19 @@ export default function Home() {
                           <span>•</span>
                           <span>Hype Risk: {result.recommendedReel.hypeRisk}</span>
                         </div>
-                        <a
-                          href={`https://www.youtube.com/results?search_query=${encodeURIComponent(result.recommendedReel.title)}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 bg-red-600/20 hover:bg-red-600/30 border border-red-500/40 text-red-300 text-[11px] font-bold px-3 py-1 rounded-lg transition-all"
-                        >
-                          <svg className="w-3.5 h-3.5 text-red-400 fill-current" viewBox="0 0 24 24">
-                            <path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418 c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768 C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.86-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M9.545,15.568V8.432L15.818,12L9.545,15.568z"/>
-                          </svg>
-                          Watch Reel
-                        </a>
+                        {activeVideo && (
+                          <a
+                            href={activeVideo.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 bg-red-600/20 hover:bg-red-600/30 border border-red-500/40 text-red-300 text-[11px] font-bold px-3 py-1 rounded-lg transition-all"
+                          >
+                            <svg className="w-3.5 h-3.5 text-red-400 fill-current" viewBox="0 0 24 24">
+                              <path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418 c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768 C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.86-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M9.545,15.568V8.432L15.818,12L9.545,15.568z"/>
+                            </svg>
+                            ▶ Watch Reel
+                          </a>
+                        )}
                       </div>
                     </div>
                   ) : (
