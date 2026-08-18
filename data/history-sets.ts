@@ -196,18 +196,18 @@ export const historyScenarios: Record<string, HistoryScenario> = {
     history: noTechSignalHistory,
     defaultCurrentReelId: 'notech-3'
   },
-  demoTrapHistory: {
-    id: 'demoTrapHistory',
-    title: 'SWE Trap Scenario (MacBook current)',
-    description: 'High-signal Java/SWE lifestyle memes. Current Reel is Laptop Comparison. Trap tests broad SWE interest extraction.',
-    history: demoTrapHistory,
-    defaultCurrentReelId: 'trap-4'
-  },
   demoTrapHistoryAltCurrent: {
     id: 'demoTrapHistoryAltCurrent',
     title: 'SWE Trap Scenario (Java GC current)',
     description: 'Same history, but Current Reel is Java GC Meme. Tests if JVM interest dominates or remains broad.',
     history: demoTrapHistoryAltCurrent,
     defaultCurrentReelId: 'trap-1'
+  },
+  demoTrapHistory: {
+    id: 'demoTrapHistory',
+    title: 'SWE Trap Scenario (MacBook current)',
+    description: 'High-signal Java/SWE lifestyle memes. Current Reel is Laptop Comparison. Trap tests broad SWE interest extraction.',
+    history: demoTrapHistory,
+    defaultCurrentReelId: 'trap-4'
   }
 };
